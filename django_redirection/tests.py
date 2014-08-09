@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-""" Test for django_redirector
+""" Test for django_redirection
 """
 
 from django.test import TestCase
@@ -11,8 +11,8 @@ from django.conf import settings
 
 from django.core.exceptions import PermissionDenied
 
-import django_redirector
-import django_redirector.views
+import django_redirection
+import django_redirection.views
 
 class DummyRequest:
     def __init__(self,user,GET={}):
@@ -35,20 +35,20 @@ class URLconfGeneratorTest(TestCase):
 
 
         urlpatterns = patterns("",
-                               url(r'^test_groupa/except/(?P<suburl>.*)', 'django_redirector.views.redirect_for_exceptions',{"tag":"test_groupa/except/"}),
-                               url(r'^test_login/except/(?P<suburl>.*)', 'django_redirector.views.redirect_for_exceptions',{"tag":"test_login/except/"}),
-                               url(r'^test_staff/except/(?P<suburl>.*)', 'django_redirector.views.redirect_for_exceptions',{"tag":"test_staff/except/"}),
-                               url(r'^test/except/(?P<suburl>.*)', 'django_redirector.views.redirect_for_exceptions',{"tag":"test/except/"}),
-                               url(r'^test_staff2/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_staff',{"tag":"test_staff2/"}),
-                               url(r'^test_login2/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_login',{"tag":"test_login2/"}),
-                               url(r'^test_groupa/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_group',{"tag":"test_groupa/"}),
-                               url(r'^test_groupb/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_group',{"tag":"test_groupb/"}),
-                               url(r'^test_super/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_superuser',{"tag":"test_super/"}),
-                               url(r'^test_login/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_login',{"tag":"test_login/"}),
-                               url(r'^test_staff/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_staff',{"tag":"test_staff/"}),
-                               url(r'^test/(?P<suburl>.*)', 'django_redirector.views.redirect_with_auth_superuser',{"tag":"test/"}),
+                               url(r'^test_groupa/except/(?P<suburl>.*)', 'django_redirection.views.redirect_for_exceptions',{"tag":"test_groupa/except/"}),
+                               url(r'^test_login/except/(?P<suburl>.*)', 'django_redirection.views.redirect_for_exceptions',{"tag":"test_login/except/"}),
+                               url(r'^test_staff/except/(?P<suburl>.*)', 'django_redirection.views.redirect_for_exceptions',{"tag":"test_staff/except/"}),
+                               url(r'^test/except/(?P<suburl>.*)', 'django_redirection.views.redirect_for_exceptions',{"tag":"test/except/"}),
+                               url(r'^test_staff2/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_staff',{"tag":"test_staff2/"}),
+                               url(r'^test_login2/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_login',{"tag":"test_login2/"}),
+                               url(r'^test_groupa/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_group',{"tag":"test_groupa/"}),
+                               url(r'^test_groupb/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_group',{"tag":"test_groupb/"}),
+                               url(r'^test_super/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_superuser',{"tag":"test_super/"}),
+                               url(r'^test_login/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_login',{"tag":"test_login/"}),
+                               url(r'^test_staff/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_staff',{"tag":"test_staff/"}),
+                               url(r'^test/(?P<suburl>.*)', 'django_redirection.views.redirect_with_auth_superuser',{"tag":"test/"}),
                                )
-        generated_urlpatterns = django_redirector.generate_url()
+        generated_urlpatterns = django_redirection.generate_url()
 
         self.assertEquals(len(urlpatterns),len(generated_urlpatterns))
         for ind in range(0,len(urlpatterns)):
@@ -69,10 +69,10 @@ class URLconfGeneratorTest(TestCase):
 
 
         urlpatterns = patterns("",
-                               url(r'^test_super/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_superuser',{"tag":"test_super"}),
-                               url(r'^test/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_superuser',{"tag":"test"}),
+                               url(r'^test_super/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_superuser',{"tag":"test_super"}),
+                               url(r'^test/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_superuser',{"tag":"test"}),
                                )
-        generated_urlpatterns = django_redirector.generate_url()
+        generated_urlpatterns = django_redirection.generate_url()
 
         self.assertEquals(len(urlpatterns),len(generated_urlpatterns))
         for ind in range(0,len(urlpatterns)):
@@ -93,10 +93,10 @@ class URLconfGeneratorTest(TestCase):
 
 
         urlpatterns = patterns("",
-                               url(r'^test_staff2/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_staff',{"tag":"test_staff2"}),
-                               url(r'^test_staff/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_staff',{"tag":"test_staff"}),
+                               url(r'^test_staff2/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_staff',{"tag":"test_staff2"}),
+                               url(r'^test_staff/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_staff',{"tag":"test_staff"}),
                                )
-        generated_urlpatterns = django_redirector.generate_url()
+        generated_urlpatterns = django_redirection.generate_url()
 
         self.assertEquals(len(urlpatterns),len(generated_urlpatterns))
         for ind in range(0,len(urlpatterns)):
@@ -118,10 +118,10 @@ class URLconfGeneratorTest(TestCase):
 
 
         urlpatterns = patterns("",
-                               url(r'^test_login2/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_login',{"tag":"test_login2"}),
-                               url(r'^test_login/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_login',{"tag":"test_login"}),
+                               url(r'^test_login2/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_login',{"tag":"test_login2"}),
+                               url(r'^test_login/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_login',{"tag":"test_login"}),
                                )
-        generated_urlpatterns = django_redirector.generate_url()
+        generated_urlpatterns = django_redirection.generate_url()
 
         self.assertEquals(len(urlpatterns),len(generated_urlpatterns))
         for ind in range(0,len(urlpatterns)):
@@ -143,10 +143,10 @@ class URLconfGeneratorTest(TestCase):
 
 
         urlpatterns = patterns("",
-                               url(r'^test_groupa/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_group',{"tag":"test_groupa"}),
-                               url(r'^test_groupb/(?P<suburl>.*)', 'django_redirector.redirect_with_auth_group',{"tag":"test_groupb"}),
+                               url(r'^test_groupa/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_group',{"tag":"test_groupa"}),
+                               url(r'^test_groupb/(?P<suburl>.*)', 'django_redirection.redirect_with_auth_group',{"tag":"test_groupb"}),
                                )
-        generated_urlpatterns = django_redirector.generate_url()
+        generated_urlpatterns = django_redirection.generate_url()
 
         self.assertEquals(len(urlpatterns),len(generated_urlpatterns))
         for ind in range(0,len(urlpatterns)):
@@ -171,18 +171,18 @@ class RedirectTest(TestCase):
         normal_user = User.objects.create_user(username='test2', email='test2@example.co', password='secret')
         normal_user.save()
 
-        result = django_redirector.views.redirect_with_auth_superuser(DummyRequest(user),tag="test/",suburl="")
+        result = django_redirection.views.redirect_with_auth_superuser(DummyRequest(user),tag="test/",suburl="")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test/")
 
-        result = django_redirector.views.redirect_with_auth_superuser(DummyRequest(user),tag="test/",suburl="aaaa")
+        result = django_redirection.views.redirect_with_auth_superuser(DummyRequest(user),tag="test/",suburl="aaaa")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test/aaaa")
 
-        result = django_redirector.views.redirect_with_auth_superuser(DummyRequest(user),tag="test/",suburl="aaaa/bbbb/")
+        result = django_redirection.views.redirect_with_auth_superuser(DummyRequest(user),tag="test/",suburl="aaaa/bbbb/")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test/aaaa/bbbb/")
 
-        self.assertRaises(PermissionDenied, lambda: django_redirector.views.redirect_with_auth_superuser(DummyRequest(normal_user),tag="test/",suburl="aaaa/bbbb/"))
+        self.assertRaises(PermissionDenied, lambda: django_redirection.views.redirect_with_auth_superuser(DummyRequest(normal_user),tag="test/",suburl="aaaa/bbbb/"))
 
-        #result = django_redirector.views.redirect_with_auth_superuser(DummyRequest(normal_user),tag="test/except/",suburl="except")
+        #result = django_redirection.views.redirect_with_auth_superuser(DummyRequest(normal_user),tag="test/except/",suburl="except")
         #self.assertEquals(result['X-Accel-Redirect'],"/protected_test/except")
 
     def test_except(self):
@@ -193,7 +193,7 @@ class RedirectTest(TestCase):
         normal_user = User.objects.create_user(username='test2', email='test2@example.co', password='secret')
         normal_user.save()
 
-        result = django_redirector.views.redirect_for_exceptions(DummyRequest(normal_user),tag="test/except/",suburl="except")
+        result = django_redirection.views.redirect_for_exceptions(DummyRequest(normal_user),tag="test/except/",suburl="except")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test/except/except")
 
     def test_staff(self):
@@ -209,18 +209,18 @@ class RedirectTest(TestCase):
         normal_user = User.objects.create_user(username='test2', email='test2@example.co', password='secret')
         normal_user.save()
 
-        result = django_redirector.views.redirect_with_auth_staff(DummyRequest(user),tag="test_staff/",suburl="")
+        result = django_redirection.views.redirect_with_auth_staff(DummyRequest(user),tag="test_staff/",suburl="")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_staff/")
 
-        result = django_redirector.views.redirect_with_auth_staff(DummyRequest(user),tag="test_staff/",suburl="aaaa")
+        result = django_redirection.views.redirect_with_auth_staff(DummyRequest(user),tag="test_staff/",suburl="aaaa")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_staff/aaaa")
 
-        result = django_redirector.views.redirect_with_auth_staff(DummyRequest(user),tag="test_staff/",suburl="aaaa/bbbb/")
+        result = django_redirection.views.redirect_with_auth_staff(DummyRequest(user),tag="test_staff/",suburl="aaaa/bbbb/")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_staff/aaaa/bbbb/")
 
-        self.assertRaises(PermissionDenied, lambda: django_redirector.views.redirect_with_auth_staff(DummyRequest(normal_user),tag="test_staff/",suburl="aaaa/bbbb/"))
+        self.assertRaises(PermissionDenied, lambda: django_redirection.views.redirect_with_auth_staff(DummyRequest(normal_user),tag="test_staff/",suburl="aaaa/bbbb/"))
 
-        #result = django_redirector.views.redirect_with_auth_staff(DummyRequest(normal_user),tag="test_staff/",suburl="except")
+        #result = django_redirection.views.redirect_with_auth_staff(DummyRequest(normal_user),tag="test_staff/",suburl="except")
         #self.assertEquals(result['X-Accel-Redirect'],"/protected_test_staff/except")
 
     def test_login(self):
@@ -235,18 +235,18 @@ class RedirectTest(TestCase):
 
         a_user = AnonymousUser()
 
-        result = django_redirector.views.redirect_with_auth_login(DummyRequest(user),tag="test_login/",suburl="")
+        result = django_redirection.views.redirect_with_auth_login(DummyRequest(user),tag="test_login/",suburl="")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_login/")
 
-        result = django_redirector.views.redirect_with_auth_login(DummyRequest(user),tag="test_login/",suburl="aaaa")
+        result = django_redirection.views.redirect_with_auth_login(DummyRequest(user),tag="test_login/",suburl="aaaa")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_login/aaaa")
 
-        result = django_redirector.views.redirect_with_auth_login(DummyRequest(user),tag="test_login/",suburl="aaaa/bbbb/")
+        result = django_redirection.views.redirect_with_auth_login(DummyRequest(user),tag="test_login/",suburl="aaaa/bbbb/")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_login/aaaa/bbbb/")
 
-        self.assertRaises(PermissionDenied, lambda: django_redirector.views.redirect_with_auth_login(DummyRequest(a_user),tag="test_login/",suburl="aaaa/bbbb/"))
+        self.assertRaises(PermissionDenied, lambda: django_redirection.views.redirect_with_auth_login(DummyRequest(a_user),tag="test_login/",suburl="aaaa/bbbb/"))
 
-        #result = django_redirector.views.redirect_with_auth_staff(DummyRequest(a_user),tag="test",suburl="except")
+        #result = django_redirection.views.redirect_with_auth_staff(DummyRequest(a_user),tag="test",suburl="except")
         #self.assertEquals(result['X-Accel-Redirect'],"/protected_test/except")
 
     def test_group(self):
@@ -262,14 +262,14 @@ class RedirectTest(TestCase):
         normal_user = User.objects.create_user(username='test2', email='test2@example.co', password='secret')
         normal_user.save()
 
-        result = django_redirector.views.redirect_with_auth_group(DummyRequest(userA),tag="test_groupa/",suburl="")
+        result = django_redirection.views.redirect_with_auth_group(DummyRequest(userA),tag="test_groupa/",suburl="")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_groupa/")
 
-        result = django_redirector.views.redirect_with_auth_group(DummyRequest(userA),tag="test_groupa/",suburl="aaaa")
+        result = django_redirection.views.redirect_with_auth_group(DummyRequest(userA),tag="test_groupa/",suburl="aaaa")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_groupa/aaaa")
 
-        result = django_redirector.views.redirect_with_auth_group(DummyRequest(userA),tag="test_groupa/",suburl="aaaa/bbbb/")
+        result = django_redirection.views.redirect_with_auth_group(DummyRequest(userA),tag="test_groupa/",suburl="aaaa/bbbb/")
         self.assertEquals(result['X-Accel-Redirect'],"/protected_test_groupa/aaaa/bbbb/")
 
-        self.assertRaises(PermissionDenied, lambda: django_redirector.views.redirect_with_auth_group(DummyRequest(normal_user),tag="test_groupa/",suburl="aaaa/bbbb/"))
+        self.assertRaises(PermissionDenied, lambda: django_redirection.views.redirect_with_auth_group(DummyRequest(normal_user),tag="test_groupa/",suburl="aaaa/bbbb/"))
 

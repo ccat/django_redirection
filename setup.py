@@ -3,7 +3,7 @@ import sys, os
 
 version = '0.1'
 
-setup(name='django_redirector',
+setup(name='django_redirection',
       version=version,
       description="Redirection app by using X-Accel-Redirect",
       classifiers=["Framework :: Django","License :: OSI Approved :: MIT License","Programming Language :: Python"], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers

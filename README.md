@@ -1,13 +1,13 @@
-Django Redirector
+Django Redirection
 ====
 
 *** 作成中です ***
 
-Django RedirectorはDjangoでユーザー認証を行った後、nginxに転送させるdjango applicationです。
+Django RedirectionはDjangoでユーザー認証を行った後、nginxに転送させるdjango applicationです。
 
 
 ## Description
-Django RedirectorはDjangoでユーザー認証を行った後、nginxに転送させるdjango applicationです。
+Django RedirectionはDjangoでユーザー認証を行った後、nginxに転送させるdjango applicationです。
 画像ファイルや他のWebアプリケーションに対して、Djangoのユーザーを利用して一括したアクセス制御を
 行うことができます。
 
