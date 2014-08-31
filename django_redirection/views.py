@@ -5,7 +5,9 @@ from django.http import Http404
 from django.core.mail import send_mail,mail_admins
 from django.conf import settings
 import urllib
+from django.views.decorators.csrf import csrf_exempt
 
+@csrf_exempt
 def redirect_with_auth_superuser(request,tag,suburl):#,redirect_tag=None,except_url=None):
     """If access user is a superuser and return return X-Accel-Redirect.
     """
@@ -17,6 +19,7 @@ def redirect_with_auth_superuser(request,tag,suburl):#,redirect_tag=None,except_
     raise PermissionDenied
 
 
+@csrf_exempt
 def redirect_with_auth_staff(request,tag,suburl):#,redirect_tag=None,except_url=None):
     """If access user is a staff and return return X-Accel-Redirect.
     """
@@ -27,6 +30,7 @@ def redirect_with_auth_staff(request,tag,suburl):#,redirect_tag=None,except_url=
     raise PermissionDenied
 
 
+@csrf_exempt
 def redirect_with_auth_group(request,tag,suburl):#,redirect_tag=None,except_url=None):
     """If access user is a group and return return X-Accel-Redirect.
     """
@@ -38,6 +42,7 @@ def redirect_with_auth_group(request,tag,suburl):#,redirect_tag=None,except_url=
     raise Http404
 
 
+@csrf_exempt
 def redirect_with_auth_login(request,tag,suburl):#,redirect_tag=None,except_url=None):
     """If access user is a staff and return return X-Accel-Redirect.
     """
@@ -49,6 +54,7 @@ def redirect_with_auth_login(request,tag,suburl):#,redirect_tag=None,except_url=
     raise PermissionDenied
 
 
+@csrf_exempt
 def redirect_for_exceptions(request, tag, suburl):
     """ Check tag in settings.DJANGO_REDIRECTER_EXCEPT and return X-Accel-Redirect when True.
     """
