@@ -35,12 +35,12 @@ def generate_url():
         for key,item in settings.DJANGO_REDIRECTER_EXCEPT.items():
             if(key[-1]!="/"):
                 key = key + "/"
-            urlpatterns += patterns('',url('^%s(?P<suburl>.*)' % key, 'django_redirector.views.redirect_for_exceptions',{"tag":key}))
+            urlpatterns += patterns('',url('^%s(?P<suburl>.*)' % key, 'django_redirection.views.redirect_for_exceptions',{"tag":key}))
 
     for key in sorted(target_urls, key=len, reverse=True):
         if(key[-1]!="/"):
             key = key + "/"
-        urlpatterns += patterns('',url('^%s(?P<suburl>.*)' % key, 'django_redirector.views.redirect_with_auth_%s' % target_urls[key],{"tag":key}))
+        urlpatterns += patterns('',url('^%s(?P<suburl>.*)' % key, 'django_redirection.views.redirect_with_auth_%s' % target_urls[key],{"tag":key}))
 
     return urlpatterns
 
